@@ -1,9 +1,11 @@
 from django.urls import path 
+from django.contrib.auth.views import LoginView, LogoutView
 from . import views
 urlpatterns=[
     path('register/', views.register, name='register'),
-
-  path('dashborad', views.get_books, name='book_list'),
+    path('login/', LoginView.as_view(), name='login'),  # Add the login view
+    path('logout/', LogoutView.as_view(), name='logout'),  # Add the logout view
+  path('accounts/profile', views.get_books, name='book_list'),
   path('add/book/', views.create_book, name='create_book'),
   path('show/book/<int:id>/', views.show_book, name='show_book'),
   path('update/book/<int:book_id>/', views.update, name='update_book'),

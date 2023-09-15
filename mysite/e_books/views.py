@@ -23,12 +23,12 @@ def register(request):
             return redirect('book_list')
     else:
         form = UserRegistrationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'user/index.html', {'form': form})
 
 @login_required
 def get_books(request):
     context = {"books": Book.objects.all()}	
-    return render(request,'allBooks.html',context)
+    return render(request,'book/allBooks.html',context)
 
 @login_required
 def create_book(request):
